@@ -8,7 +8,6 @@ interface ICreateClient {
 
 export class CreateClientUseCase {
   async execute({ password, username }: ICreateClient) {
-    // Verify if user exists
     const clientExist = await prisma.clients.findFirst({
       where: {
         username: {
@@ -22,7 +21,6 @@ export class CreateClientUseCase {
     }
 
     const hashPassword = await hash(password, 10);
-    // Encrypt the passsword
 
     const client = await prisma.clients.create({
       data: {
@@ -32,7 +30,5 @@ export class CreateClientUseCase {
     });
 
     return client;
-
-    // Save client
   }
 }
