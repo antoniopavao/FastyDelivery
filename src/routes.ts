@@ -10,7 +10,6 @@ const createClientController = new CreateClientController();
 const authenticateClientController = new AuthenticateClientController();
 
 const createDelivermanController = new CreateDeliverymanController();
-
 const authenticateDeliverymanController =
   new AuthenticateDeliverymanController();
 
