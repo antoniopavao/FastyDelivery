@@ -13,7 +13,7 @@ interface IAuthenticateDeliveryman {
   password: string;
 }
 
-export class AuthenticateDeliveryman {
+export class AuthenticateDeliverymanUseCase {
   async execute({ username, password }: IAuthenticateDeliveryman) {
     const deliveryman = await prisma.deliveryman.findFirst({
       where: { username: username },
