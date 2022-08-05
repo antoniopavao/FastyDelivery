@@ -19,8 +19,9 @@ export class AuthenticateClientUseCase {
 
     // Verify if user exists
     const client = await prisma.clients.findFirst({
-      where: { username: username },
+      where: { username },
     });
+    console.log(client);
 
     if (!client) {
       throw new Error(`Username or password invalid!`);
