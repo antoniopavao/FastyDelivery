@@ -6,6 +6,7 @@ import { AuthenticateDeliverymanController } from './modules/account/useCases/au
 import { CreateClientController } from './modules/clients/useCases/createClient/CreateClientController';
 import { CreateDeliveryController } from './modules/deliveries/useCases/createDelivery/CreateDeliveryController';
 import { FindAvailablesDeliveriesController } from './modules/deliveries/useCases/findAllAvailable/FindAvailablesDeliveriesController';
+import { UpdateDeliverymanController } from './modules/deliveries/useCases/updateDeliveryman/UpdateDeliverymanController';
 import { CreateDeliverymanController } from './modules/deliveryman/useCases/createDeliveryman/CreateDeliverymanController';
 
 const routes = Router();
@@ -19,6 +20,7 @@ const authenticateDeliverymanController =
 
 const createDeliveryController = new CreateDeliveryController();
 const findAvailablesDeliveries = new FindAvailablesDeliveriesController();
+const updateDeliverymanController = new UpdateDeliverymanController();
 
 // Clients Routes
 routes.post('/client/', createClientController.handle);
@@ -42,6 +44,12 @@ routes.post(
   '/delivery',
   ensureAuthenticateClient,
   createDeliveryController.handle,
+);
+
+routes.put(
+  '/delivery/updateDeliveryman/:id',
+  ensureAuthenticateDeliveryman,
+  updateDeliverymanController.handle,
 );
 
 export { routes };
