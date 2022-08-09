@@ -38,5 +38,6 @@ model Deliveries {
   created_at     DateTime     @default(now())
   delivered_at   DateTime?
 
+  @@unique([id, deliveryman_id], name: "link_delivery_deliveryman")
   @@map("deliveries")
 }

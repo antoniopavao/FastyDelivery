@@ -7,7 +7,7 @@ interface IUpdateEndDate {
 
 export class UpdateDeliveredUseCase {
   async execute({ delivery_id, deliveryman_id }: IUpdateEndDate) {
-    const result = await prisma.deliveries.updateMany({
+    const delivery = await prisma.deliveries.updateMany({
       where: {
         id: delivery_id,
         deliveryman_id,
@@ -17,6 +17,6 @@ export class UpdateDeliveredUseCase {
       },
     });
 
-    return result;
+    return delivery;
   }
 }
